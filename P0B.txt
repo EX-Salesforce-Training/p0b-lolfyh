@@ -96,7 +96,7 @@ public static void updateAccountSize( ) {
            }
        }
     public static void closePastDueOpportunities( ) {
-        list<Opportunity> opp1 = [SELECT CloseDate,StageName from Opportunity where (Closedate < today) AND StageName ='Closed Won'];
+        list<Opportunity> opp1 = [SELECT CloseDate,StageName from Opportunity where (Closedate < today) AND StageName !='Closed Won'];
         for(integer i=0;i < opp1.size();i++){
             opp1[i].StageName = 'Closed Lost';
             update opp1[i];
